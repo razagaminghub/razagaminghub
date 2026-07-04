@@ -223,18 +223,14 @@
             resetIframeStyles();
         }
 
-        // 3. Fullscreen & Widescreen Lock Logic
+        // 3. Fullscreen Logic (Auto-rotate hata diya hai)
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
-                // Request Full Screen on the Modal Wrapper
+                // Request Full Screen
                 modal.requestFullscreen().then(() => {
-                    // Try to force Landscape mode for mobile
-                    if (screen.orientation && screen.orientation.lock) {
-                        screen.orientation.lock('landscape').catch(function(error) {
-                            console.log("Landscape lock failed: (Requires Live Server) ", error);
-                        });
-                    }
-                    // Make iframe fill entire screen without borders
+                    // Orientation lock hata diya hai taaki zor-zabardasti na ho
+                    
+                    // Fullscreen style
                     iframeBox.style.width = "100vw";
                     iframeBox.style.height = "100vh";
                     iframeBox.style.borderRadius = "0px";
@@ -245,7 +241,6 @@
                     console.log(`Error enabling fullscreen: ${err.message}`);
                 });
             } else {
-                // Exit Fullscreen
                 document.exitFullscreen();
                 resetIframeStyles();
             }
