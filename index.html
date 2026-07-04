@@ -9,7 +9,7 @@
         :root {
             --bg-dark: #0f172a;
             --card-bg: #1e293b;
-            --accent: #00e676; /* Changed to striking neon green for that hardcore gaming vibe */
+            --accent: #00e676;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -31,17 +31,16 @@
 
         /* === TAGDA HERO SECTION (Cinematic Banner) === */
         .hero-section {
-            margin-top: 60px; /* Pushes below fixed header */
+            margin-top: 60px;
             position: relative;
             width: 100%;
-            height: 400px; /* Massive mobile banner */
+            height: 400px;
             background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=100') center/cover no-repeat;
             display: flex;
             align-items: flex-end;
             padding: 25px 20px;
         }
         
-        /* Dark gradient over image to make text readable */
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, var(--bg-dark) 0%, rgba(15,23,42,0.8) 30%, transparent 100%);
@@ -72,6 +71,20 @@
         }
         .hero-btn:active { transform: scale(0.98); }
 
+        /* === GAME EMBED SECTION CSS === */
+        .game-embed-section {
+            padding: 20px;
+            margin: 20px;
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 14px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* === CATEGORIES GRID === */
         .section-header { padding: 30px 20px 15px; font-size: 22px; font-weight: 800; }
         
@@ -89,7 +102,6 @@
         .cat-btn:active { background-color: rgba(0, 230, 118, 0.1); border-color: var(--accent); color: var(--accent); }
         .cat-icon { font-size: 26px; }
 
-        /* View All Categories Button -> Now redirects to Home */
         .cat-all { 
             grid-column: span 2; background-color: var(--card-bg); border: 2px dashed #475569; 
             color: var(--text-main); font-size: 16px; padding: 18px; 
@@ -98,7 +110,7 @@
         /* === DETAILED FOOTER === */
         footer {
             background-color: #0b1120;
-            padding: 40px 25px 120px 25px; /* Extra bottom padding so mobile nav doesn't hide it */
+            padding: 40px 25px 120px 25px;
             margin-top: 40px;
             border-top: 1px solid #1e293b;
         }
@@ -158,6 +170,23 @@
         </div>
     </section>
 
+    <!-- 🌟 NAYA SECTION: YAHAN TIC TAC TOE DIKHEGA 🌟 -->
+    <section class="game-embed-section">
+        
+        <iframe
+          src="https://gamesiknow.com/embed/tic-tac-toe/frame/?tenantId=partner__obuyGZg-JOx"
+          title="Tic Tac Toe by Games I Know"
+          width="100%"
+          height="640"
+          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
+          loading="lazy"
+          allow="fullscreen"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+        
+    </section>
+
     <!-- Categories Section -->
     <div class="section-header">All Categories</div>
     
@@ -203,7 +232,6 @@
             <a href="block-games.html" class="cat-btn"><span class="cat-icon">🧱</span> Block Games</a>
             <a href="dinosaur-games.html" class="cat-btn"><span class="cat-icon">🦖</span> Dinosaur Games</a>
             
-            <!-- View All now redirects to index.html (Home Page) -->
             <a href="index.html" class="cat-btn cat-all">⟲ Reload Categories</a>
         </div>
     </div>
