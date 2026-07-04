@@ -29,128 +29,103 @@
         .brand span { color: var(--accent); }
         .search-icon { font-size: 20px; color: var(--text-main); background: none; border: none; font-weight: bold; cursor: pointer; }
 
-        /* === TAGDA HERO SECTION (Cinematic Banner) === */
+        /* === HERO SECTION === */
         .hero-section {
             margin-top: 60px;
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 350px;
             background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=100') center/cover no-repeat;
             display: flex;
             align-items: flex-end;
             padding: 25px 20px;
         }
-        
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, var(--bg-dark) 0%, rgba(15,23,42,0.8) 30%, transparent 100%);
         }
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-title { font-size: 32px; font-weight: 900; line-height: 1.1; margin-bottom: 15px; }
 
-        .hero-content {
-            position: relative; z-index: 2; width: 100%;
-        }
-        .hero-badge {
-            background: #ff3366; color: white; padding: 5px 12px; border-radius: 6px;
-            font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            display: inline-block; margin-bottom: 12px;
-        }
-        .hero-title {
-            font-size: 36px; font-weight: 900; line-height: 1.1; margin-bottom: 10px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-        }
-        .hero-info {
-            display: flex; gap: 15px; margin-bottom: 20px; font-size: 14px; color: #cbd5e1; font-weight: 600;
-        }
-        .hero-info span { display: flex; align-items: center; gap: 5px; }
+        /* === NEW: GAME THUMBNAILS GRID === */
+        .section-title { padding: 30px 20px 15px; font-size: 22px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; justify-content: space-between;}
+        .section-title span { color: var(--accent); font-size: 14px; font-weight: 600; }
         
-        .hero-btn {
-            background: var(--accent); color: #000; border: none; padding: 16px;
-            border-radius: 12px; font-size: 18px; font-weight: 900; width: 100%;
-            text-transform: uppercase; letter-spacing: 1px; cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0, 230, 118, 0.4); transition: transform 0.2s;
+        .games-grid {
+            padding: 0 20px 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
-        .hero-btn:active { transform: scale(0.98); }
 
-        /* === GAME EMBED SECTION CSS (Updated for Multiple Games) === */
-        .game-embed-section {
-            padding: 30px 20px;
-            margin: 20px;
+        .game-card {
             background-color: var(--card-bg);
             border: 1px solid #334155;
-            border-radius: 14px;
-            text-align: center;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s;
             display: flex;
-            flex-direction: column; /* Games ek ke niche ek aayenge */
-            gap: 40px; /* Har game ke beech gap */
-            align-items: center;
+            flex-direction: column;
         }
         
-        .game-section-title {
-            font-size: 24px;
-            font-weight: 900;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: -10px;
+        /* Colorful Thumbnail Backgrounds */
+        .thumb-img {
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            position: relative;
+            cursor: pointer;
         }
+        .bg-1 { background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); }
+        .bg-2 { background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); }
+        .bg-3 { background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%); }
+        .bg-4 { background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); }
+        .bg-5 { background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%); }
+        .bg-6 { background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%); }
+
+        /* Play Button Overlay */
+        .play-overlay {
+            position: absolute;
+            background: rgba(0,0,0,0.5);
+            width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .game-card:active .play-overlay { opacity: 1; }
+        .play-icon { font-size: 40px; color: white; filter: drop-shadow(0 0 10px rgba(0,230,118,0.8)); }
+
+        .game-info {
+            padding: 12px;
+            text-align: center;
+        }
+        .game-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+        .play-btn-small {
+            background: var(--accent); color: #000;
+            border: none; padding: 8px; width: 100%;
+            border-radius: 8px; font-size: 13px; font-weight: 800;
+            cursor: pointer; text-transform: uppercase;
+        }
+
+        /* Container for playing iframe */
+        .active-game-container { grid-column: span 2; border-radius: 16px; overflow: hidden; background: #000; }
+        .close-btn { background: #ef4444; color: white; padding: 12px; text-align: center; font-weight: bold; cursor: pointer; border-radius: 0 0 16px 16px; }
 
         /* === CATEGORIES GRID === */
-        .section-header { padding: 30px 20px 15px; font-size: 22px; font-weight: 800; }
-        
         .categories-container { padding: 0 20px 20px; }
-        .cat-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
-        }
-        
-        .cat-btn {
-            background-color: var(--card-bg); border: 1px solid #334155; border-radius: 14px;
-            padding: 16px 10px; text-align: center; color: var(--text-main); text-decoration: none;
-            font-size: 15px; font-weight: 600; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-            transition: all 0.2s;
-        }
-        .cat-btn:active { background-color: rgba(0, 230, 118, 0.1); border-color: var(--accent); color: var(--accent); }
+        .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .cat-btn { background-color: var(--card-bg); border: 1px solid #334155; border-radius: 14px; padding: 16px 10px; text-align: center; color: var(--text-main); text-decoration: none; font-size: 15px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .cat-icon { font-size: 26px; }
 
-        .cat-all { 
-            grid-column: span 2; background-color: var(--card-bg); border: 2px dashed #475569; 
-            color: var(--text-main); font-size: 16px; padding: 18px; 
-        }
-
-        /* === DETAILED FOOTER === */
-        footer {
-            background-color: #0b1120;
-            padding: 40px 25px 120px 25px;
-            margin-top: 40px;
-            border-top: 1px solid #1e293b;
-        }
-        .footer-brand { font-size: 24px; font-weight: 900; margin-bottom: 20px; }
-        .footer-brand span { color: var(--accent); }
-        .footer-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
-        
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
-        .footer-col h4 { color: white; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .footer-col a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; font-size: 14px; transition: color 0.2s; }
-        .footer-col a:hover { color: var(--accent); }
-        
-        .social-links { display: flex; gap: 15px; margin-top: 20px; }
-        .social-icon { background: var(--card-bg); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; font-size: 18px; }
-        
-        .copyright { text-align: center; color: #475569; font-size: 13px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #1e293b; }
-
-        /* === BOTTOM APP NAVIGATION === */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px);
-            display: flex; justify-content: space-around; padding: 12px 10px calc(12px + env(safe-area-inset-bottom));
-            border-top: 1px solid #334155; z-index: 1000;
-        }
+        /* === FOOTER & NAV === */
+        footer { background-color: #0b1120; padding: 40px 25px 120px 25px; border-top: 1px solid #1e293b; text-align: center;}
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(15px); display: flex; justify-content: space-around; padding: 12px 10px calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid #334155; z-index: 1000; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--text-muted); text-decoration: none; font-size: 11px; font-weight: 600; }
         .nav-item.active { color: var(--accent); }
         .nav-item i { font-size: 22px; font-style: normal; }
 
         @media (min-width: 600px) {
-            .cat-grid { grid-template-columns: repeat(4, 1fr); }
-            .cat-all { grid-column: span 4; }
             body { max-width: 600px; margin: 0 auto; border-left: 1px solid #1e293b; border-right: 1px solid #1e293b; }
             .bottom-nav, header { max-width: 600px; left: auto; }
         }
@@ -164,207 +139,146 @@
         <button class="search-icon">🔍</button>
     </header>
 
-    <!-- 🌟 TAGDA HERO SECTION 🌟 -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-badge">Trending #1</span>
-            <h1 class="hero-title">Cyber<br>Assassins 3D</h1>
-            <div class="hero-info">
-                <span>⭐ 4.8</span>
-                <span>🔥 Action</span>
-                <span>👥 Multiplayer</span>
-            </div>
-            <button class="hero-btn">▶ Play Now</button>
+            <h1 class="hero-title">Play the Best<br>HTML5 Games</h1>
+            <p style="color: #cbd5e1; font-size: 14px; margin-bottom: 10px;">Free to play. No downloads required.</p>
         </div>
     </section>
 
-    <!-- 🌟 YAHAN AAPKE SAARE GAMES DIKHENGE 🌟 -->
-    <section class="game-embed-section">
+    <!-- 🌟 NEW THUMBNAIL GAMES SECTION 🌟 -->
+    <div class="section-title">Popular Games <span>⭐ Top Rated</span></div>
+    
+    <div class="games-grid" id="gamesContainer">
         
-        <div class="game-section-title">🎮 Play Instantly 🎮</div>
+        <!-- Game 1: Tic Tac Toe -->
+        <div class="game-card" id="card-tic-tac-toe">
+            <div class="thumb-img bg-1" onclick="loadGame('card-tic-tac-toe', 'https://gamesiknow.com/embed/tic-tac-toe/frame/?tenantId=partner__obuyGZg-JOx', 640)">
+                ❌⭕
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>Tic Tac Toe</h3>
+                <button class="play-btn-small" onclick="loadGame('card-tic-tac-toe', 'https://gamesiknow.com/embed/tic-tac-toe/frame/?tenantId=partner__obuyGZg-JOx', 640)">Play</button>
+            </div>
+        </div>
 
-        <!-- 1. Tic Tac Toe -->
-        <iframe
-          src="https://gamesiknow.com/embed/tic-tac-toe/frame/?tenantId=partner__obuyGZg-JOx"
-          title="Tic Tac Toe by Games I Know"
-          width="100%"
-          height="640"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Game 2: Word Search -->
+        <div class="game-card" id="card-word-search">
+            <div class="thumb-img bg-2" onclick="loadGame('card-word-search', 'https://gamesiknow.com/embed/word-search/frame/?tenantId=partner__obuyGZg-JOx', 720)">
+                🔠🔍
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>Word Search</h3>
+                <button class="play-btn-small" onclick="loadGame('card-word-search', 'https://gamesiknow.com/embed/word-search/frame/?tenantId=partner__obuyGZg-JOx', 720)">Play</button>
+            </div>
+        </div>
 
-        <!-- 2. Word Search -->
-        <iframe
-          src="https://gamesiknow.com/embed/word-search/frame/?tenantId=partner__obuyGZg-JOx"
-          title="Word Search by Games I Know"
-          width="100%"
-          height="720"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Game 3: Sudoku -->
+        <div class="game-card" id="card-sudoku">
+            <div class="thumb-img bg-3" onclick="loadGame('card-sudoku', 'https://gamesiknow.com/embed/sudoku/frame/?tenantId=partner__obuyGZg-JOx', 720)">
+                🔢🧩
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>Sudoku</h3>
+                <button class="play-btn-small" onclick="loadGame('card-sudoku', 'https://gamesiknow.com/embed/sudoku/frame/?tenantId=partner__obuyGZg-JOx', 720)">Play</button>
+            </div>
+        </div>
 
-        <!-- 3. Sudoku -->
-        <iframe
-          src="https://gamesiknow.com/embed/sudoku/frame/?tenantId=partner__obuyGZg-JOx"
-          title="Sudoku by Games I Know"
-          width="100%"
-          height="720"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Game 4: I Know -->
+        <div class="game-card" id="card-i-know">
+            <div class="thumb-img bg-4" onclick="loadGame('card-i-know', 'https://gamesiknow.com/embed/i-know/frame/?tenantId=partner__obuyGZg-JOx', 640)">
+                🧠💡
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>I Know</h3>
+                <button class="play-btn-small" onclick="loadGame('card-i-know', 'https://gamesiknow.com/embed/i-know/frame/?tenantId=partner__obuyGZg-JOx', 640)">Play</button>
+            </div>
+        </div>
 
-        <!-- 4. I Know -->
-        <iframe
-          src="https://gamesiknow.com/embed/i-know/frame/?tenantId=partner__obuyGZg-JOx"
-          title="I Know by Games I Know"
-          width="100%"
-          height="640"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Game 5: Bingo -->
+        <div class="game-card" id="card-bingo">
+            <div class="thumb-img bg-5" onclick="loadGame('card-bingo', 'https://gamesiknow.com/embed/bingo/frame/?tenantId=partner__obuyGZg-JOx', 640)">
+                🎱🎟️
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>Bingo</h3>
+                <button class="play-btn-small" onclick="loadGame('card-bingo', 'https://gamesiknow.com/embed/bingo/frame/?tenantId=partner__obuyGZg-JOx', 640)">Play</button>
+            </div>
+        </div>
 
-        <!-- 5. Bingo -->
-        <iframe
-          src="https://gamesiknow.com/embed/bingo/frame/?tenantId=partner__obuyGZg-JOx"
-          title="Bingo by Games I Know"
-          width="100%"
-          height="640"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
+        <!-- Game 6: Four in a Row -->
+        <div class="game-card" id="card-four-in-row">
+            <div class="thumb-img bg-6" onclick="loadGame('card-four-in-row', 'https://gamesiknow.com/embed/four-in-a-row/frame/?tenantId=partner__obuyGZg-JOx', 640)">
+                🔴🟡
+                <div class="play-overlay"><span class="play-icon">▶</span></div>
+            </div>
+            <div class="game-info">
+                <h3>Four in a Row</h3>
+                <button class="play-btn-small" onclick="loadGame('card-four-in-row', 'https://gamesiknow.com/embed/four-in-a-row/frame/?tenantId=partner__obuyGZg-JOx', 640)">Play</button>
+            </div>
+        </div>
 
-        <!-- 6. Four in a Row -->
-        <iframe
-          src="https://gamesiknow.com/embed/four-in-a-row/frame/?tenantId=partner__obuyGZg-JOx"
-          title="Four in a Row by Games I Know"
-          width="100%"
-          height="640"
-          style="border:0;border-radius:16px;max-width:420px;display:block;margin:0 auto;"
-          loading="lazy"
-          allow="fullscreen"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-        ></iframe>
-        
-    </section>
+    </div>
 
     <!-- Categories Section -->
-    <div class="section-header">All Categories</div>
-    
+    <div class="section-title">More Categories</div>
     <div class="categories-container">
         <div class="cat-grid">
-            <a href="2-player-games.html" class="cat-btn"><span class="cat-icon">👥</span> 2 Player Games</a>
-            <a href="games-for-girls.html" class="cat-btn"><span class="cat-icon">🎀</span> Games for Girls</a>
-            <a href="puzzle-games.html" class="cat-btn"><span class="cat-icon">🧩</span> Puzzle Games</a>
-            <a href="shooting-games.html" class="cat-btn"><span class="cat-icon">🎯</span> Shooting Games</a>
-            <a href="car-games.html" class="cat-btn"><span class="cat-icon">🏎️</span> Car Games</a>
-            <a href="horror-games.html" class="cat-btn"><span class="cat-icon">👻</span> Horror Games</a>
-            <a href="obby-games.html" class="cat-btn"><span class="cat-icon">🏃</span> Obby Games</a>
-            <a href="adventure-games.html" class="cat-btn"><span class="cat-icon">🗺️</span> Adventure Games</a>
-            <a href="multiplayer-games.html" class="cat-btn"><span class="cat-icon">🌍</span> Multiplayer Games</a>
-            <a href="brain-games.html" class="cat-btn"><span class="cat-icon">🧠</span> Brain Games</a>
-            <a href="fighting-games.html" class="cat-btn"><span class="cat-icon">🥊</span> Fighting Games</a>
-            <a href="mobile-games.html" class="cat-btn"><span class="cat-icon">📱</span> Mobile Games</a>
-            <a href="skill-games.html" class="cat-btn"><span class="cat-icon">⚡</span> Skill Games</a>
-            <a href="stickman-games.html" class="cat-btn"><span class="cat-icon">🤺</span> Stickman Games</a>
-            <a href="platform-games.html" class="cat-btn"><span class="cat-icon">🍄</span> Platform Games</a>
-            <a href="brainrot-games.html" class="cat-btn"><span class="cat-icon">🤪</span> Brainrot Games</a>
-            <a href="simulation-games.html" class="cat-btn"><span class="cat-icon">🏗️</span> Simulation Games</a>
-            <a href="games-for-boys.html" class="cat-btn"><span class="cat-icon">👦</span> Games for Boys</a>
-            <a href="3d-games.html" class="cat-btn"><span class="cat-icon">🧊</span> 3D Games</a>
-            <a href="war-games.html" class="cat-btn"><span class="cat-icon">⚔️</span> War Games</a>
-            <a href="action-games.html" class="cat-btn"><span class="cat-icon">🔥</span> Action Games</a>
-            <a href="mouse-games.html" class="cat-btn"><span class="cat-icon">🖱️</span> Mouse Games</a>
-            <a href="arcade-games.html" class="cat-btn"><span class="cat-icon">🕹️</span> Arcade Games</a>
-            <a href="popular-games.html" class="cat-btn"><span class="cat-icon">⭐</span> Popular Games</a>
-            <a href="fps-games.html" class="cat-btn"><span class="cat-icon">🔫</span> FPS Games</a>
-            <a href="gun-games.html" class="cat-btn"><span class="cat-icon">💣</span> Gun Games</a>
-            <a href="racing-games.html" class="cat-btn"><span class="cat-icon">🏁</span> Racing Games</a>
-            <a href="io-games.html" class="cat-btn"><span class="cat-icon">🌐</span> .io Games</a>
-            <a href="dress-up-games.html" class="cat-btn"><span class="cat-icon">👗</span> Dress Up Games</a>
-            <a href="driving-games.html" class="cat-btn"><span class="cat-icon">🚗</span> Driving Games</a>
-            <a href="typing-games.html" class="cat-btn"><span class="cat-icon">⌨️</span> Typing Games</a>
-            <a href="running-games.html" class="cat-btn"><span class="cat-icon">👟</span> Running Games</a>
-            <a href="bike-games.html" class="cat-btn"><span class="cat-icon">🏍️</span> Bike Games</a>
-            <a href="truck-games.html" class="cat-btn"><span class="cat-icon">🚚</span> Truck Games</a>
-            <a href="soccer-games.html" class="cat-btn"><span class="cat-icon">⚽</span> Soccer Games</a>
-            <a href="flash-games.html" class="cat-btn"><span class="cat-icon">⚡</span> Flash Games</a>
-            <a href="watermelon-games.html" class="cat-btn"><span class="cat-icon">🍉</span> Watermelon Games</a>
-            <a href="block-games.html" class="cat-btn"><span class="cat-icon">🧱</span> Block Games</a>
-            <a href="dinosaur-games.html" class="cat-btn"><span class="cat-icon">🦖</span> Dinosaur Games</a>
-            
-            <a href="index.html" class="cat-btn cat-all">⟲ Reload Categories</a>
+            <a href="#" class="cat-btn"><span class="cat-icon">👥</span> 2 Player</a>
+            <a href="#" class="cat-btn"><span class="cat-icon">🏎️</span> Car Games</a>
+            <a href="#" class="cat-btn"><span class="cat-icon">🎯</span> Shooting</a>
+            <a href="#" class="cat-btn"><span class="cat-icon">🧠</span> Brain Games</a>
         </div>
     </div>
 
-    <!-- 🌟 DETAILED FOOTER 🌟 -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-brand">Raza<span>Gaming</span>Hub</div>
-        <p class="footer-desc">Your ultimate destination for the best free online HTML5 games. Play instantly on mobile, tablet, or desktop without any downloads or installations.</p>
-        
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <a href="index.html">Home</a>
-                <a href="action-games.html">Action Games</a>
-                <a href="racing-games.html">Racing Games</a>
-                <a href="puzzle-games.html">Puzzle Games</a>
-            </div>
-            <div class="footer-col">
-                <h4>Legal & Help</h4>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-        </div>
-
-        <div class="social-links">
-            <a href="#" class="social-icon">📱</a>
-            <a href="#" class="social-icon">▶️</a>
-            <a href="#" class="social-icon">🎮</a>
-        </div>
-
-        <div class="copyright">
-            &copy; 2026 RazaGamingHub. All Rights Reserved.
-        </div>
+        <div class="brand">Raza<span>Gaming</span>Hub</div>
+        <p style="color:#64748b; font-size:12px; margin-top:10px;">&copy; 2026 RazaGamingHub. All Rights Reserved.</p>
     </footer>
 
     <!-- App Bottom Navigation -->
     <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">
-            <i>🏠</i>
-            <span>Home</span>
-        </a>
-        <a href="action-games.html" class="nav-item">
-            <i>🔥</i>
-            <span>Action</span>
-        </a>
-        <a href="racing-games.html" class="nav-item">
-            <i>🏎️</i>
-            <span>Racing</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i>👤</i>
-            <span>Profile</span>
-        </a>
+        <a href="index.html" class="nav-item active"><i>🏠</i><span>Home</span></a>
+        <a href="#" class="nav-item"><i>🔥</i><span>Action</span></a>
+        <a href="#" class="nav-item"><i>🏎️</i><span>Racing</span></a>
+        <a href="#" class="nav-item"><i>👤</i><span>Profile</span></a>
     </nav>
+
+    <!-- 🌟 JAVASCRIPT FOR CLICK-TO-PLAY 🌟 -->
+    <script>
+        function loadGame(cardId, iframeUrl, gameHeight) {
+            const card = document.getElementById(cardId);
+            
+            // Thumbnail hata kar Iframe load karega aur usko thoda bada karega (grid span 2)
+            card.classList.remove('game-card');
+            card.classList.add('active-game-container');
+            
+            card.innerHTML = `
+                <iframe
+                  src="${iframeUrl}"
+                  width="100%"
+                  height="${gameHeight}"
+                  style="border:0;display:block;margin:0 auto;"
+                  loading="lazy"
+                  allow="fullscreen"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                ></iframe>
+                <div class="close-btn" onclick="location.reload()">✖ Close Game</div>
+            `;
+            
+            // Screen ko auto-scroll karega game ki taraf
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
 
 </body>
 </html>
